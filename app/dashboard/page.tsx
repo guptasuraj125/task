@@ -1,64 +1,50 @@
+"use client";
+
 import React from "react";
 import Header from "../components/layout/Header";
 import Sidebar from "../section/Sidebar";
-import Button from "../components/ui/Button";
-import Link from "next/link";
 
 const Page = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#F5F6FA]">
 
       <Header />
 
       <div className="flex flex-1">
+
         <Sidebar />
 
-        <div className="flex-1 flex flex-col items-center justify-center text-center px-4 py-10">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8">
-            Start optimizing your online presence
-          </h1>
+        <main className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 md:ml-24">
 
-          <div className="flex flex-col sm:flex-row gap-3 w-full max-w-xl">
-            <input
-              type="text"
-              className="px-4 py-2 border rounded w-full"
-              placeholder="Enter your website URL"
-            />
-            <button className="px-6 py-2 bg-black text-white rounded hover:bg-gray-700">
-              Start Now
-            </button>
+          <div className="w-full max-w-2xl text-center">
+
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-8 sm:mb-10">
+              Start optimizing your online presence
+            </h1>
+
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
+
+              <input
+                type="text"
+                placeholder="Enter a website"
+                className="w-full sm:w-[420px] px-4 py-3 border border-blue-400 rounded-md outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+              />
+
+              <button className="px-6 py-3 rounded-md text-white font-medium bg-[#5B5BD6] hover:bg-[#4c4cc4] transition w-full sm:w-auto">
+                Start now
+              </button>
+
+            </div>
+
           </div>
-        </div>
+
+        </main>
+
       </div>
 
-      <footer className="px-4 md:px-20 py-6">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-sm text-center md:text-left">
-
-          <ul className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center md:justify-start">
-            <li>Contact Us</li>
-            <li>About Us</li>
-            <li>Blog</li>
-            <li className="flex items-center">
-              English
-              <select className="ml-2 border rounded px-2 py-1">
-                <option value="en">English</option>
-                <option value="es">Spanish</option>
-                <option value="fr">French</option>
-              </select>
-            </li>
-          </ul>
-
-          <p className="text-gray-600">
-            © 2008 – 2026 TAsk. All rights reserved.
-          </p>
-
-          <div className="flex justify-center md:justify-end">
-            <Link href="/pricing">
-              <Button text="See plan and pricing" />
-            </Link>
-          </div>
-
-        </div>
+      <footer className="px-4 sm:px-10 py-6 text-sm text-gray-500 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <span>Send feedback</span>
+        <span>© 2008 – 2026 Task. All rights reserved.</span>
       </footer>
 
     </div>

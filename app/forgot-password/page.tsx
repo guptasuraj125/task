@@ -47,7 +47,7 @@ export default function Page() {
             className="border rounded-md px-4 py-3"
           />
 
-          <button type="submit" className="bg-black text-white py-3 rounded-md">
+          <button type="submit" className="bg-orange-500 text-white py-3 rounded-md">
             Send Reset Link
           </button>
 
