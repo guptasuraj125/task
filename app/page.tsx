@@ -2,8 +2,9 @@ import React from 'react'
 import Navbar from './components/layout/Navbar'
 import Hero from './section/Hero'
 import Footer from './section/Footer'
-import Pricing from './section/Pricing'
+
 import "./globals.css";
+import Pricing from './pricing/page';
 
 const page = () => {
   return (
