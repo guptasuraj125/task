@@ -7,19 +7,20 @@ import { loginSchema } from "../form-validation/loginSchema";
 import useForm from "../hooks/useForm";
 import useAuth from "../hooks/useAuth";
 import Input from "../components/ui/Input";
+import { LoginForm } from "../types/auth";
 
 export default function Page() {
   const router = useRouter();
   const passwordRef = useRef<HTMLInputElement>(null);
 
-  const { values, handleChange } = useForm({
+  const { values, handleChange } = useForm<LoginForm>({
     email: "",
     password: "",
   });
 
   const { login } = useAuth();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const result = loginSchema.safeParse(values);
@@ -33,7 +34,7 @@ export default function Page() {
       <div className="w-full max-w-md bg-white p-6 rounded-xl shadow-md">
 
         <div
-          onClick={() => router.back()}
+          onClick={() => router.push("/")}
           className="cursor-pointer text-2xl mb-4 text-gray-600"
         >
           <FiArrowLeft />
@@ -51,7 +52,7 @@ export default function Page() {
             placeholder="Email address"
             value={values.email}
             onChange={handleChange}
-            onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+            onKeyDown={(e) => {
               if (e.key === "Enter") {
                 e.preventDefault();
                 passwordRef.current?.focus();
@@ -74,10 +75,19 @@ export default function Page() {
           >
             Forgot Password?
           </p>
-          <p>Didnt have an Account?</p>
-          <span className="cursor-pointer text-blue-600" onClick={() => router.push("/signup")}>Sign Up</span>
 
-          <button type="submit" className="bg-black text-white py-3 rounded-md">
+          <p>Didnt have an Account?</p>
+          <span
+            className="cursor-pointer text-blue-600"
+            onClick={() => router.push("/signup")}
+          >
+            Sign Up
+          </span>
+
+          <button
+            type="submit"
+            className="bg-black text-white py-3 rounded-md"
+          >
             Login
           </button>
         </form>

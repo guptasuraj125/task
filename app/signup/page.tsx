@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { signupSchema } from "../form-validation/signupSchema";
 import useForm from "../hooks/useForm";
 import Input from "../components/ui/Input";
+import { SignupForm } from "../types/auth";
 
 export default function Page() {
   const router = useRouter();
@@ -13,16 +14,18 @@ export default function Page() {
   const passwordRef = useRef<HTMLInputElement>(null);
   const confirmRef = useRef<HTMLInputElement>(null);
 
-  const { values, handleChange } = useForm({
+  const { values, handleChange } = useForm<SignupForm>({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
 
-  const [errors, setErrors] = useState<any>({});
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof SignupForm, string[]>>
+  >({});
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const result = signupSchema.safeParse(values);
@@ -51,7 +54,7 @@ export default function Page() {
           placeholder="Full Name"
           value={values.name}
           onChange={handleChange}
-          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          onKeyDown={(e) => {
             if (e.key === "Enter") {
               e.preventDefault();
               emailRef.current?.focus();
@@ -69,7 +72,7 @@ export default function Page() {
           placeholder="Email address"
           value={values.email}
           onChange={handleChange}
-          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          onKeyDown={(e) => {
             if (e.key === "Enter") {
               e.preventDefault();
               passwordRef.current?.focus();
@@ -87,7 +90,7 @@ export default function Page() {
           placeholder="Password"
           value={values.password}
           onChange={handleChange}
-          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          onKeyDown={(e) => {
             if (e.key === "Enter") {
               e.preventDefault();
               confirmRef.current?.focus();

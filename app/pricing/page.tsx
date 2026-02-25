@@ -3,42 +3,42 @@ import React from "react";
 const Pricing = () => {
   const plans = [
     {
-      name: "Free Plans",
-      Price: "0 $",
-      description: "Keep chatting with your friends and family ",
+      name: "Free Plan",
+      price: "0$",
+      description: "Basic features for normal use",
     },
     {
-      name: "Free Plans",
-      Price: "399$ rupess",
-      description: "Adavnce Tool as compared to Free plan ",
+      name: "Basic Plan",
+      price: "399$",
+      description: "Some extra tools included",
     },
     {
-      name: "Pro Plus Plans",
-      Price: "1000$ rupess",
-      description: "All types of tools and advance fetures available ",
+      name: "Pro Plan",
+      price: "1000$",
+      description: "All tools and premium features",
     },
   ];
+
   return (
-    <div id="pricing" className="mb-90 ">
-      <h1 className="text-4xl font-bold text-gray-600 mt-20 py-18 text-center">
+    <div id="pricing" className="mt-20 px-4">
+      <h1 className="text-3xl md:text-4xl font-bold text-center mb-10">
         Pricing Plans
       </h1>
 
-      {/* FLEX container bahar */}
-      <div className="flex justify-center items-center  gap-20">
+      <div className="flex flex-col md:flex-row md:justify-center gap-6">
         {plans.map((plan, index) => (
           <div
             key={index}
-            className="w-60 text-center text-2xl  border h-70  p-4"
+            className="border p-5 rounded text-center w-full md:w-72"
           >
-            {plan.name}
+            <h2 className="text-xl font-semibold">{plan.name}</h2>
 
-            <h1 className="text-sm mt-3">{plan.Price}</h1>
+            <p className="mt-2 text-lg font-bold">{plan.price}</p>
 
-            <h2 className="text-sm mt-8">{plan.description}</h2>
+            <p className="mt-4 text-sm">{plan.description}</p>
 
-            <button className="mt-20 text-sm px-6 py-2 rounded-md bg-black text-white">
-              Get Started
+            <button className="mt-6 bg-black text-white px-5 py-2 rounded">
+              Buy Now
             </button>
           </div>
         ))}
