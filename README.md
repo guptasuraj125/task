@@ -25,7 +25,7 @@ Tailwind CSS
 
 TypeScript
 
-Zod (for form validation)
+Zod or form validation
 
 How to Run
 
@@ -44,8 +44,13 @@ http://localhost:3000
 Project Structure
 
 app → all pages
+
 components → reusable components
+
 hooks → custom hooks
+
 validation → form validation schemas
+
 types → TypeScript types
+
 utils → helper functions
