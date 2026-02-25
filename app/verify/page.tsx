@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 export default function VerifyPage() {
   const router = useRouter();
-  const [otp, setOtp] = useState(Array(6).fill(""));
+  const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
   const inputs = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleChange = (value: string, index: number) => {
@@ -19,12 +19,12 @@ export default function VerifyPage() {
       inputs.current[index + 1]?.focus();
     }
 
-    if (newOtp.join("").length === 6) {
+    if (newOtp.every((digit) => digit !== "")) {
       router.push("/onboarding/role");
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
     if (e.key === "Backspace" && !otp[index] && index > 0) {
       inputs.current[index - 1]?.focus();
     }
@@ -57,7 +57,9 @@ export default function VerifyPage() {
             {otp.map((digit, index) => (
               <input
                 key={index}
-                ref={(el) => (inputs.current[index] = el)}
+                ref={(el) => {
+                  inputs.current[index] = el;
+                }}
                 type="text"
                 maxLength={1}
                 value={digit}
@@ -75,7 +77,7 @@ export default function VerifyPage() {
           <p className="text-sm text-gray-600">
             Haven't received an email? Check your spam or contact us at{" "}
             <span className="text-blue-600 cursor-pointer">
-              mail@semrush.com
+              mail@task.com
             </span>
           </p>
 
