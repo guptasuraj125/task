@@ -41,7 +41,7 @@ export default function Sidebar() {
         </button>
       </div>
 
-      <div className="hidden md:flex fixed left-0 top-0 h-screen w-24 bg-[#F4F1FA] flex-col items-center pt-6">
+      <div className="hidden md:flex fixed left-0 top-0 h-screen w-24 bg-[#F4F1FA] flex-col items-center pt-20">
         <div className="flex flex-col items-center gap-8 w-full">
           {menu.map((item, i) => {
             const Icon = item.icon;
